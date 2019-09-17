@@ -3,9 +3,9 @@ module.exports = {
     title: `Haja Andriamaro Blog and Learnings`,
     name: `Haja Andriamaro`,
     siteUrl: `https://novela.narative.co`,
-    description: `On this blog I share my struggles and breakthrough as Fullstack Web developper `,
+    description: `On this blog I share my struggles and breakthrough as Fullstack Web developper`,
     hero: {
-      heading: `There is no real learning wihtout pains.`,
+      heading: `Your pain, your gain`,
       maxWidth: 652,
     },
     social: [
@@ -40,13 +40,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Novela by Narative`,
-        short_name: `Novela`,
+        name: `Haja publication`,
+        short_name: `Haja`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
         display: `standalone`,
-        icon: `src/assets/favicon.png`,
+        icon: `src/assets/h-logo.png`,
       },
     },
   ],
