@@ -5,7 +5,7 @@ module.exports = {
     siteUrl: `https://novela.narative.co`,
     description: `On this blog I share my struggles and breakthrough as Fullstack Web developper`,
     hero: {
-      heading: `Your pain, your gain`,
+      heading: `My pain, your gain`,
       maxWidth: 652,
     },
     social: [
