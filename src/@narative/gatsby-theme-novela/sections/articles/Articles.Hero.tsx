@@ -85,11 +85,11 @@ const SubheadingContainer = styled.div`
   margin-bottom: 100px;
 
   ${mediaqueries.desktop`
-    margin-bottom: 80px;
+    margin-bottom: 60px;
   `};
 
   ${mediaqueries.tablet`
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   `};
 `;
 
@@ -111,6 +111,7 @@ const HeadingContainer = styled.div`
 
   ${mediaqueries.tablet`
     width: 100%;
+    margin: 50px 0;
   `}
 `;
 

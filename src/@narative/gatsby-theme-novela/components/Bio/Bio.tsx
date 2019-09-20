@@ -33,7 +33,7 @@ const BioContainer = styled.div`
   left: -10px;
 
   ${mediaqueries.phablet`
-  flex-direction: column;
+    flex-direction: column;
   `};
 `;
 
@@ -45,7 +45,7 @@ const BioAvatar = styled.div`
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.25);
   margin-right: 16px;
-  margin: 10px 26px 10px 10px;
+  margin: 10px 26px 20px 10px;
 
   &::after {
     content: '';
