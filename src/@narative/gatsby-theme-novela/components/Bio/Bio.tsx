@@ -35,14 +35,13 @@ const BioContainer = styled.div`
   ${mediaqueries.phablet`
   flex-direction: column;
   `};
-
 `;
 
 const BioAvatar = styled.div`
   display: block;
   position: relative;
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.25);
   margin-right: 16px;
@@ -53,8 +52,8 @@ const BioAvatar = styled.div`
     position: absolute;
     left: -5px;
     top: -5px;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.25);
   }
@@ -64,15 +63,15 @@ const BioAvatar = styled.div`
     position: absolute;
     left: -5px;
     top: -5px;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border: 2px solid ${p => p.theme.colors.accent};
   }
 `;
 
 const BioAvatarInner = styled.div`
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.25);
   margin-right: 16px;
