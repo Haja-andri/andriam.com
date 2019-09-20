@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
+import mediaqueries from '@styles/media';
 
 import Image from '@components/Image';
 import { IAuthor } from '@types';
@@ -30,6 +31,11 @@ const BioContainer = styled.div`
   align-items: center;
   position: relative;
   left: -10px;
+
+  ${mediaqueries.phablet`
+  flex-direction: column;
+  `};
+
 `;
 
 const BioAvatar = styled.div`
