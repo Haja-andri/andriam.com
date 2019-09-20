@@ -20,7 +20,7 @@ const Blockquote = styled.blockquote`
     padding-bottom: 0;
     width: 100%;
     margin: 0 auto;
-    font-size: 30px;
+    font-size: 24px;
     line-height: 1.32;
     font-weight: bold;
 
@@ -30,9 +30,10 @@ const Blockquote = styled.blockquote`
     `};
 
     ${mediaqueries.phablet`
-      font-size: 26px;
-      padding: 0 10px 0 40px;
-      margin-left: 10px;
+      font-size: 20px;
+      padding: 0 10px 0 20px;
+      margin-left: 20px;
+      margin-right: 20px;
       `};
   }
 `;

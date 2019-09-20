@@ -3,7 +3,7 @@ title: Begin with Closure !
 author: Haja Andriamaro
 date: 2019-04-31
 hero: ./images/closure.jpg
-excerpt: One the first thing you are being told as a wanna be developper is that "You must undestand and master the concept of Closure". Because it is a recurrent topic for job interview.
+excerpt: One the first thing you are being told as a wanna be developper is "You must undestand and master the concept of Closure". Because it is a recurrent topic for job interview.
 ---
 
 One the first thing I have being told as I started learning to code is that 
@@ -109,9 +109,7 @@ import {ThemeProvider} from "theme-ui";
 import theme from "./theme";
 
 export default props => (
-  <ThemeProvider 
-    theme={theme}
-    >
+  <ThemeProvider theme={theme} >
     {props.children}
   </ThemeProvider>
 );
