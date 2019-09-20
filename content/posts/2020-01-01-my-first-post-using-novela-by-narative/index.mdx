@@ -101,6 +101,19 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 ## Code and Syntax Highlighting
 
+### JSX
+
+```jsx
+import React from "react";
+import { ThemeProvider } from "theme-ui";
+import theme from "./theme";
+
+export default props => (
+  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+);
+```
+### Javascript
+
 ```javascript
 var s = "JavaScript syntax highlighting";
 alert(s);
@@ -109,18 +122,6 @@ alert(s);
 ```
 No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
-```
-
-### JSX
-
-```javascript
-import React from "react";
-import { ThemeProvider } from "theme-ui";
-import theme from "./theme";
-
-export default props => (
-  <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
-);
 ```
 
 ## Blockquotes
