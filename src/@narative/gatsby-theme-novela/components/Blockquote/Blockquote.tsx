@@ -21,12 +21,12 @@ const Blockquote = styled.blockquote`
     padding-bottom: 0;
     width: 100%;
     margin: 0 auto;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 1.32;
     font-weight: bold;
 
     ${mediaqueries.tablet`
-      font-size: 26px;
+      font-size: 24px;
       padding: 0 180px;
     `};
 
