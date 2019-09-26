@@ -22,13 +22,60 @@ So here is my 2 cents article to try to make sense of closure as you begin your 
 <div className="Image__Small">
   <img
     src="./images/closure-twit.png"
-    alt="Mark Dalgleish twit"
+    alt="Mark Dalgleish twitt on Hooks and Closure"
   />
 </div>
 
-## Some notorious website definition.
-## Confused yet ?
-## My shot
+## Some definition.
+
+We will learn about closure by making it real with a minimalistic app (if I can actually call it an app), but first here are some definition from some well known developper resources website.
+
+### From MDN 
+[developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+> "A closure is the combination of a function and the lexical environment within which that function was declared."
+
+### From 3WS 
+[w3schools.com](https://www.w3schools.com/js/js_function_closures.asp)
+> "JavaScript variables can belong to the local or global scope. Global variables can be made local (private) with closures."
+
+### From Wikipedia 
+[wikipedia.com](https://en.wikipedia.org/wiki/Closure_(computer_programming))
+> "In programming languages, a closure, also lexical closure or function closure, is a technique for implementing lexically scoped name binding in a language with first-class functions"
+
+
+Right, hmmm, confused yet? I bet you are. So let's just try to ride the bike and see what happen once the wheels start rolling ...
+
+## The phone dial pad
+
+Most resources around closure will make you use a "counter" to practice and understand closure. I decided to find another way of illustrating this concept so I make sure that I fully understand what I am actually trying to make you understand.. so we will make a dialling phone pad instead of the "traditional" counter.
+
+To make this article as light as possible we will not build any UI but rather make use of functions to simulate the pad, and console logs to simulate the screen that display the numbers been dialled.
+
+### First thing first we need a phone pad
+
+Let's juste make a raw function for now. I will assume that you understand the basic concept of js functions here and you probably already wrote some.
+
+```javascript 
+// declare the function
+function phonePad () {
+  console.log('i am a phone pad');
+}
+
+// invoke the function
+phonePad(); // Output 'i am a phone pad'
+```
+
+Next we want to be able to tell the Pad what number is being dialled from the pad, so we will just pass that number (strokedDigit) as an argument to phonePad function.
+
+```javascript
+function phonePad (strokedDigit) {
+  console.log('You dialled this phone number: ' + strokedDigit);
+}
+
+// invoke the function with digit #3 passed as a string
+phonePad('3');
+```
+
 ## Twitter shot
 ## Few definitions
 ### Functions
