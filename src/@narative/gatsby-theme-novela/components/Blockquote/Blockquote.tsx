@@ -8,6 +8,7 @@ const Blockquote = styled.blockquote`
   font-family: ${p => p.theme.fonts.serif};
   font-style: italic;
   width: 100%;
+  max-width: 680px;
 
   ${mediaqueries.tablet`
     margin: 10px auto 35px;
@@ -21,9 +22,8 @@ const Blockquote = styled.blockquote`
     padding-bottom: 0;
     width: 100%;
     margin: 0 auto;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.32;
-    font-weight: bold;
 
     ${mediaqueries.tablet`
       font-size: 24px;
