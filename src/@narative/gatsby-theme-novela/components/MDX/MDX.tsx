@@ -191,7 +191,7 @@ const PrismCSS = p => css`
       font-size: 1.3rem;
       text-size-adjust: none;
       overflow: scroll;
-      border-radius: 5px;
+      border-radius: 0;
       margin: 0 auto 25px;
       padding: 15px 10px;
       overflow: initial;
