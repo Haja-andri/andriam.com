@@ -191,10 +191,10 @@ const PrismCSS = p => css`
       font-size: 1.3rem;
       text-size-adjust: none;
       border-radius: 0px;
-      border:1px solid red;
       margin: 0 auto 25px;
       padding: 15px 10px;
       overflow: initial;
+      width: unset;
       float: left;
       width: 100%;
       position: relative;
