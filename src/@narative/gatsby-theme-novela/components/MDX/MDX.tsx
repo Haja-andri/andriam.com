@@ -189,6 +189,7 @@ const PrismCSS = p => css`
 
     ${mediaqueries.phablet`
       font-size: 13px;
+      border:1px solid red;
       border-radius: 0px;
       margin: 0 auto 25px;
       padding: 15px 10px;
