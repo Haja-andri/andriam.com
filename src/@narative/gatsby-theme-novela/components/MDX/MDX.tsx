@@ -125,7 +125,7 @@ const PrismCSS = p => css`
     max-width: 744px;
     margin: 0 auto;
     padding: 32px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin: 15px auto 50px;
     border-radius: 5px;
     font-family: ${p.theme.fonts.monospace};
