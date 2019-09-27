@@ -195,6 +195,7 @@ const PrismCSS = p => css`
       padding: 15px 10px;
       overflow: initial;
       width: unset;
+      max-width: unset;
       float: left;
       width: 100%;
       position: relative;
