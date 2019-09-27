@@ -32,9 +32,7 @@ const Blockquote = styled.blockquote`
 
     ${mediaqueries.phablet`
       font-size: 20px;
-      padding: 0 10px 0 20px;
-      margin-left: 20px;
-      margin-right: 20px;
+      padding: 10px 10px;
       `};
   }
 `;
