@@ -20,7 +20,7 @@ const Blockquote = styled.blockquote`
     border-left:5px solid grey;
     padding-left: 15px;
     padding-bottom: 0;
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
     font-size: 20px;
     line-height: 1.32;
