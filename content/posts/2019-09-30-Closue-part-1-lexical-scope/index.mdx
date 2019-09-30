@@ -1,7 +1,7 @@
 ---
 title: Closure part 1, lexical scope.
 author: Haja Andriamaro
-date: 2019-04-30
+date: 2019-09-30
 hero: ./images/closure.jpg
 excerpt: One the first thing I have being told as I started learning to code is
 ---
@@ -156,56 +156,3 @@ It basically means that phonePad() can see its direct surrounding outside its {}
 but the outside surrounding cannot see what happens inside phonePad().
 
 In the next article we will talk about nested function and referencing
-
-
-### Step #3 add nested function
-
-In addition to local variable, we will create a nested function (inside phonePad), we will call it "stoke". This nested function 
-will be used for processing each stroke received by phonePad. 
-We will move the concat operation inside the nested function (stoke) for that matter;
-
-```javascript
-function phonePad (strokedDigit) {
-  // intialise the number to an empty string
-  let dialledNumber = '';
-  //declare the nested function
-  function stroke (){
-    // concatanate each new stroke to build the phone number
-    dialledNumber = dialledNumber.concat(strokedDigit);
-  }
-  // invoke stroke
-  stroke();
-  console.log('You dialled this phone number: ' + dialledNumber);
-}
-```
-
-OK, you got me, we still don't have any memory. But I want you to notice one very important concept in Javascript that you need to understand to truly understand Closure: Lexical scope.
-
-### Step #4 understanding lexical scope
-
-As you can see in the function above, we are invoking the "stroke" function without passing in any arguments. Yet, stroke function is still able to reach/find the variables that it needs (strokedDigit and dialledNumber) to execute... 
-
-Basically the stroke() function will first search locally (within its curly bracket {} scope ) the declaration/initialisation of the variables to process. If it does not find them locally, it has the ability to search for them outside the {} scope. 
-This is what is called Lexical scope (as far as I understand it as of today). 
-
-However Lexical scope are only one way : inside/out search. So if you declare a variable inside the nested stroke() function and try to use it outside of stroke {} scope, it will generate an error. 
-That is because of the inside->out only reach. In plain English (or Fran-glish) stroke() can see outside its {} bracket scope, but the outside cannot see what has been declared inside stroke().
-
-The following will break the Pad
-
-```javascript
-function phonePad (strokedDigit) {
-  ...
-  function stroke (){
-    // local variable declared inside stroke
-    const localVariableToStroke = 'stoke local variable';
-    console.log(localVariableToStroke);  
-  }
-  // Console output 'stroke local variable'
-  stroke(); 
-  // Error! localVariableToStroke not reachable !
-  console.log(localVariableToStroke); 
-}
-```
-
-### To be continued ...
