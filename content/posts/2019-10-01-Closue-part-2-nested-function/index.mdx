@@ -6,7 +6,36 @@ hero: ./images/nesting.jpg
 excerpt: Second building bloc of closure
 ---
 
-### Step #3 add nested function
+## Follow along from Part I
+
+In my [previous article](../closure-part-1-lexical-scope), we have covered the concept of Lexical Scope, a building bloc to understand closure. 
+We have seen that we can use a variable to keep track of the digits selected from the phone pad. There was also a "warning" that
+at this stage, there is a big flaw in our code, even if we have the result we wanted (remembering each digit secletion). 
+In this article, we will talk about how to fix the flaw with nested function, also a building bloc to understand and use closure.
+
+### What's the flaw in our code?
+
+At this stage we have the following code 
+```javascript
+// intialise the number to an empty string
+let dialledNumber = '';
+
+function phonePad (digit) {
+  console.log('You stroke digit: ' + digit);
+  // concatanate each new stroke to build the dialled number
+  dialledNumber = dialledNumber.concat(digit);
+  console.log('The phone number to call is: ' + digit);
+}
+
+phonePad('0'); 
+phonePad('6');
+phonePad('5');
+```
+It does the job, we are able to store each new digit in the "dialledNumber" variable. And because it is in the Lexical scope
+of phonePad(), we have no error.
+
+However, since "dialledNumber" act like a global variable (accessible/mutable from anywhere in the script), it is therefore "unprotected".
+Which means that somewehere dow the line "dialledNumber" is called and used for another puropose ...
 
 In addition to local variable, we will create a nested function (inside phonePad), we will call it "stoke". This nested function 
 will be used for processing each stroke received by phonePad. 
