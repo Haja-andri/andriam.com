@@ -128,6 +128,7 @@ And the output
 
 Voila! Remember, by default functions in javascripts can not hold sate (information) beyond 
 its instance life cycle. What we did here is to enable just that by 
+
 1. Protecting "dialledNumber", making it a "private" variable that can hold state.
 2. Nesting a function that take care of updating of the state (protected variable "dialledNumber")
 3. Keeping phonePad() instance "alive" by using a reference to its nested function.
