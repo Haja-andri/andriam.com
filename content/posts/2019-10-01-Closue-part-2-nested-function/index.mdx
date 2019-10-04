@@ -1,5 +1,5 @@
 ---
-title: Closure part 2, nested component.
+title: Closure part 2; Nested function.
 author: Haja Andriamaro
 date: 2019-10-01
 hero: ./images/nesting.jpg
@@ -13,7 +13,7 @@ We have seen that we can use a variable to keep track of the digits selected fro
 at this stage, there is a big flaw in our code, even if we have the result we wanted (remembering each digit secletion). 
 In this article, we will talk about how to fix the flaw with nested function, also a building bloc to understand and use closure.
 
-### What's the flaw in our code?
+### What's the flaw?
 
 At this stage we have the following code 
 ```javascript
@@ -24,65 +24,135 @@ function phonePad (digit) {
   console.log('You stroke digit: ' + digit);
   // concatanate each new stroke to build the dialled number
   dialledNumber = dialledNumber.concat(digit);
-  console.log('The phone number to call is: ' + digit);
+  console.log('The phone number to call is: ' + dialledNumber);
 }
 
 phonePad('0'); 
 phonePad('6');
 phonePad('5');
 ```
-It does the job, we are able to store each new digit in the "dialledNumber" variable. And because it is in the Lexical scope
-of phonePad(), we have no error.
+It does the job, we are able to store each new digit in the "dialledNumber" variable. And because "dialledNumber" is in the Lexical scope
+of phonePad() we are all good ...
 
-However, since "dialledNumber" act like a global variable (accessible/mutable from anywhere in the script), it is therefore "unprotected".
-Which means that somewehere dow the line "dialledNumber" is called and used for another puropose ...
-
-In addition to local variable, we will create a nested function (inside phonePad), we will call it "stoke". This nested function 
-will be used for processing each stroke received by phonePad. 
-We will move the concat operation inside the nested function (stoke) for that matter;
+However, "dialledNumber" is acting like a global variable (accessible/mutable by any intermediat scripts), it is therefore "unprotected".
+That means that "dialledNumber" can accidently (or not) be used for another puroposes, and our phone pad logic would be broken.
+The line 13 below will break the app
 
 ```javascript
-function phonePad (strokedDigit) {
-  // intialise the number to an empty string
+// intialise the number to an empty string
+let dialledNumber = '';
+
+function phonePad (digit) {
+  console.log('You stroke digit: ' + digit);
+  dialledNumber = dialledNumber.concat(digit);
+  console.log('The phone number to call is: ' + dialledNumber);
+}
+
+phonePad('0'); 
+phonePad('6');
+// next line will mess up our phone pad memory
+dialledNumber = "Some random assigment"
+phonePad('5');
+```
+
+Output 
+<div className="Image__Small">
+  <img
+    src="./images/console-1.png"
+    alt="Console closure error 1"
+  />
+</div>
+
+### Protecting the pad memory
+
+We need to find a way to protected "dialledNumber" variable. We can do just that moving it inside phonePad(). 
+This will make accessible only from within phonePad as it is off the global scope now.
+
+So lets try that here
+
+```javascript
+function phonePad (digit) {
+  // intialise the number inside phonePad
   let dialledNumber = '';
-  //declare the nested function
-  function stroke (){
-    // concatanate each new stroke to build the phone number
-    dialledNumber = dialledNumber.concat(strokedDigit);
-  }
-  // invoke stroke
-  stroke();
-  console.log('You dialled this phone number: ' + dialledNumber);
+
+  console.log('You stroke digit: ' + digit);
+  dialledNumber = dialledNumber.concat(digit);
+  console.log('The phone number to call is: ' + dialledNumber);
 }
+phonePad('0'); 
+phonePad('6');
+phonePad('5');
 ```
 
-OK, you got me, we still don't have any memory. But I want you to notice one very important concept in Javascript that you need to understand to truly understand Closure: Lexical scope.
+But wait! what happened? the phonePad memory is gone !
 
-### Step #4 understanding lexical scope
+<div className="Image__Small">
+  <img
+    src="./images/console-2.png"
+    alt="Console closure error 2"
+  />
+</div>
 
-As you can see in the function above, we are invoking the "stroke" function without passing in any arguments. Yet, stroke function is still able to reach/find the variables that it needs (strokedDigit and dialledNumber) to execute... 
+Whats happening here is that, each time we call phonePad(), javascript creates a brand new instance of that function. 
+The previous onces just went to "garbage collector". Then how do we get back that memory while still keeping "dialledNumber" proteced?
 
-Basically the stroke() function will first search locally (within its curly bracket {} scope ) the declaration/initialisation of the variables to process. If it does not find them locally, it has the ability to search for them outside the {} scope. 
-This is what is called Lexical scope (as far as I understand it as of today). 
+We can do that in two folds. 1. create a nested function 2. create a reference to the nested function.
 
-However Lexical scope are only one way : inside/out search. So if you declare a variable inside the nested stroke() function and try to use it outside of stroke {} scope, it will generate an error. 
-That is because of the inside->out only reach. In plain English (or Fran-glish) stroke() can see outside its {} bracket scope, but the outside cannot see what has been declared inside stroke().
+### Nested function
 
-The following will break the Pad
+It name says it all. A nested function, is a function iside (nested) another function. We will nest it inside phonePad(). 
+But we also have to follow extra steps to make it working :
+
+1. Nest an anonymous function inside phonePad()
+2. Move "digit" argument from phonePad() to the anonymous function(digit)
+3. Return the anonymous function
+4. Return the dialledNumber variable from the anonymous function scope
+5. Assign phonePad() function to a "pad" variable
+6. Use the variable "pad" to pass the selected digits
+
+The code should look like this
 
 ```javascript
-function phonePad (strokedDigit) {
-  ...
-  function stroke (){
-    // local variable declared inside stroke
-    const localVariableToStroke = 'stoke local variable';
-    console.log(localVariableToStroke);  
+function phonePad () {
+  // intialise the number string
+  let dialledNumber = "Phone number is: ";
+  // declare the nested function receiving digits as argument
+  // And return it
+  return function (digit){
+    // concatanate each new stroke to build the phone number
+    dialledNumber = dialledNumber.concat(digit);
+    // return the concatanated digits
+    return dialledNumber
   }
-  // Console output 'stroke local variable'
-  stroke(); 
-  // Error! localVariableToStroke not reachable !
-  console.log(localVariableToStroke); 
 }
+// assign phonePad() to a variable that 
+// will serve as reference/link
+const pad = phonePad()
+// send each new nmuber to pad()
+// and display the phone number
+console.log(pad(0))
+console.log(pad(6))
+console.log(pad(5))
+console.log(pad(7))
 ```
+And the output
 
-### To be continued ...
+<div className="Image__Small">
+  <img
+    src="./images/console-4.png"
+    alt="Console closure error 2"
+  />
+</div>
+
+Voila! Remember, by default functions in javascripts can not hold sate (information) beyond 
+its instance life cycle. What we did here is to enable just that by 
+1. Protecting "dialledNumber", making it a "private" variable that can hold state.
+2. Nesting a function that take care of updating of the state (protected variable "dialledNumber")
+3. Keeping phonePad() instance "alive" by using a reference to its nested function.
+
+And that's what closure is all about, the 3 above steps :)
+
+You probably still wonder how Closures are being used concretly to make things happen in "real" app ...
+
+That will be the subject of the last article for this serie for a perfect Closure ;)
+
