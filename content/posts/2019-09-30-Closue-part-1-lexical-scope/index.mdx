@@ -76,20 +76,20 @@ function phonePad (digit) {
   console.log('You pressed digit: ' + digit);
 }
 // invoke the function with digit #3 passed as a string
-phonePad('3'); // Console output 'You pressed digit:  3'
+phonePad('3'); // 'You pressed digit:  3'
 ```
 So far so good ! but this does not constitute a phone number, we want to dial the entire 10 digits like "0617570159" right? 
 So lets keep invoking our phonePad function passing in the series of digits that constitute the phone number we intend to call.
 
 ```javascript
 function phonePad (digit) {
-  console.log('You stroke digit: ' + digit);
+  console.log('You selected digit: ' + digit);
 }
-// invoke phonePad function for each stroke 
-phonePad('0'); // Console output 'You stroke digit:  0'
-phonePad('6'); // Console output 'You stroke digit:  6'
-phonePad('5'); // Console output 'You stroke digit:  5'
-phonePad('7'); // Console output 'You stroke digit:  7'
+// invoke phonePad function for each selected digit
+phonePad('0'); // 'You selected digit:  0'
+phonePad('6'); // 'You selected digit:  6'
+phonePad('5'); // 'You selected digit:  5'
+phonePad('7'); // 'You selected digit:  7'
 ```
 
 Of course, you realised quickly that our phonePad function 
@@ -106,8 +106,8 @@ With ES6 syntax we would declare a "let" variable and give it the received numbe
 let dialledNumber = '';
 
 function phonePad (digit) {
-  console.log('You stroke digit: ' + digit);
-  // concatanate each new stroke to build the dialled number
+  console.log('You selected digit: ' + digit);
+  // concatanate each new digit to build the dialled number
   dialledNumber = dialledNumber.concat(digit);
   console.log('The phone number to call is: ' + digit);
 }

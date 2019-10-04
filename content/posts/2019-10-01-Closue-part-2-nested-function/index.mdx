@@ -21,15 +21,14 @@ At this stage we have the following code
 let dialledNumber = '';
 
 function phonePad (digit) {
-  console.log('You stroke digit: ' + digit);
-  // concatanate each new stroke to build the dialled number
+  // concatanate each new digit to build the dialled number
   dialledNumber = dialledNumber.concat(digit);
   console.log('The phone number to call is: ' + dialledNumber);
 }
 
-phonePad('0'); 
-phonePad('6');
-phonePad('5');
+phonePad('0'); // The phone number to call is: 0
+phonePad('6'); // The phone number to call is: 06
+phonePad('5'); // The phone number to call is: 065
 ```
 It does the job, we are able to store each new digit in the "dialledNumber" variable. And because "dialledNumber" is in the Lexical scope
 of phonePad() we are all good ...
@@ -43,25 +42,16 @@ The line 13 below will break the app
 let dialledNumber = '';
 
 function phonePad (digit) {
-  console.log('You stroke digit: ' + digit);
   dialledNumber = dialledNumber.concat(digit);
   console.log('The phone number to call is: ' + dialledNumber);
 }
 
-phonePad('0'); 
-phonePad('6');
+phonePad('0'); // The phone number to call is: 0
+phonePad('6'); // The phone number to call is: 06
 // next line will mess up our phone pad memory
-dialledNumber = "Some random assigment"
-phonePad('5');
+dialledNumber = "Random assigment"
+phonePad('5'); // The phone number to call is: Random assigment5
 ```
-
-Output 
-<div className="Image__Small">
-  <img
-    src="./images/console-1.png"
-    alt="Console closure error 1"
-  />
-</div>
 
 ### Protecting the pad memory
 
@@ -75,30 +65,22 @@ function phonePad (digit) {
   // intialise the number inside phonePad
   let dialledNumber = '';
 
-  console.log('You stroke digit: ' + digit);
   dialledNumber = dialledNumber.concat(digit);
   console.log('The phone number to call is: ' + dialledNumber);
 }
-phonePad('0'); 
-phonePad('6');
-phonePad('5');
+phonePad('0'); // The phone number to call is: 0
+phonePad('6'); // The phone number to call is: 6
+phonePad('5'); // The phone number to call is: 7
 ```
 
 But wait! what happened? the phonePad memory is gone !
-
-<div className="Image__Small">
-  <img
-    src="./images/console-2.png"
-    alt="Console closure error 2"
-  />
-</div>
 
 Whats happening here is that, each time we call phonePad(), javascript creates a brand new instance of that function. 
 The previous onces just went to "garbage collector". Then how do we get back that memory while still keeping "dialledNumber" proteced?
 
 We can do that in two folds. 1. create a nested function 2. create a reference to the nested function.
 
-### Nested function
+### Nested function & Reference
 
 It name says it all. A nested function, is a function iside (nested) another function. We will nest it inside phonePad(). 
 But we also have to follow extra steps to make it working :
@@ -119,7 +101,7 @@ function phonePad () {
   // declare the nested function receiving digits as argument
   // And return it
   return function (digit){
-    // concatanate each new stroke to build the phone number
+    // concatanate each new digit to build the phone number
     dialledNumber = dialledNumber.concat(digit);
     // return the concatanated digits
     return dialledNumber
