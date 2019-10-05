@@ -9,9 +9,9 @@ excerpt: Second building bloc of closure
 ## Follow along from Part I
 
 In my [previous article](../closure-part-1-lexical-scope), we have covered the concept of Lexical Scope, a building bloc to understand closure. 
-We have seen that we can use a variable to keep track of the digits selected from the phone pad. There was also a "warning" that
-at this stage, there is a big flaw in our code, even if we have the result we wanted (remembering each digit secletion). 
-In this article, we will talk about how to fix the flaw with nested function, also a building bloc to understand and use closure.
+We have seen that we can use a variable to keep track of the digits that make up the phone number. We also worned that
+at this stage, there is a serious flaw in our code. 
+In this article, we will talk about the existing flaw, and how to fix it with nested function, the other building bloc to understand and use closure.
 
 ### What's the flaw?
 
@@ -33,8 +33,8 @@ phonePad('5'); // The phone number to call is: 065
 It does the job, we are able to store each new digit in the "dialledNumber" variable. And because "dialledNumber" is in the Lexical scope
 of phonePad() we are all good ...
 
-However, "dialledNumber" is acting like a global variable (accessible/mutable by any intermediat scripts), it is therefore "unprotected".
-That means that "dialledNumber" can accidently (or not) be used for another puroposes, and our phone pad logic would be broken.
+However, "dialledNumber" is acting as a global variable here (accessible/mutable by any intermediat scripts). It is therefore "unprotected".
+It means that "dialledNumber" can be accidently (or not) used by intermediat script for other puroposes. If that happen, our phone pad logic would be broken.
 The line 13 below will break the app
 
 ```javascript
@@ -55,8 +55,9 @@ phonePad('5'); // The phone number to call is: Random assigment5
 
 ### Protecting the pad memory
 
-We need to find a way to protected "dialledNumber" variable. We can do just that moving it inside phonePad(). 
-This will make accessible only from within phonePad as it is off the global scope now.
+Therefore, we need to find a way to protected "dialledNumber" variable. We can do just that moving it inside phonePad(). 
+This will make it accessible only from inside phonePad(), and take it off the global scope now. 
+In other words, "dialledNumber" become a private variable to phonePad()
 
 So lets try that here
 
@@ -75,22 +76,28 @@ phonePad('5'); // The phone number to call is: 7
 
 But wait! what happened? the phonePad memory is gone !
 
-Whats happening here is that, each time we call phonePad(), javascript creates a brand new instance of that function. 
-The previous onces just went to "garbage collector". Then how do we get back that memory while still keeping "dialledNumber" proteced?
+Here is what is happening. Each time we call phonePad(), javascript creates a brand new instance of that function. 
+The previous instance just went to what is called "garbage collector", or just garbage if you want. 
+Then, how do we get back that memory while still keeping "dialledNumber" private?
 
-We can do that in two folds. 1. create a nested function 2. create a reference to the nested function.
+We can do that in two folds. 
+
+- Create a nested function 
+- Create a reference to the nested function.
 
 ### Nested function & Reference
 
-It name says it all. A nested function, is a function iside (nested) another function. We will nest it inside phonePad(). 
-But we also have to follow extra steps to make it working :
+It name says it all. A nested function, is a function inside (nested) another function. 
+So we will nest another function inside phonePad(). 
+But that's not enough, we also have to follow extra steps to make the phone pad working.
+Following are all the steps that we will follow :
 
-1. Nest an anonymous function inside phonePad()
-2. Move "digit" argument from phonePad() to the anonymous function(digit)
-3. Return the anonymous function
+1. Nest an anonymous function inside phonePad().
+2. Remove "digit" as phonePad(~~digit~~) argument, and set it as the anonymous function(digit) argument instead.
+3. Return the anonymous function.
 4. Return the dialledNumber variable from the anonymous function scope
 5. Assign phonePad() function to a "pad" variable
-6. Use the variable "pad" to pass the selected digits
+6. Use the variable "pad" to serve as reference and to pass the selected digits
 
 The code should look like this
 
@@ -133,7 +140,9 @@ its instance life cycle. What we did here is to enable just that by:
 2. Nesting a function that take care of updating of the state (protected variable "dialledNumber")
 3. Keeping phonePad() instance "alive" by using a reference to its nested function.
 
-The 3 above steps are what Closure is all about :)
+The 3 above steps allow us to create a function that is able to hold a private 
+state (the phone number). Which would not be possible whithout closure. 
+This is what Closure is all about :)
 
 You probably still wonder how Closures are being used concretly to make things happen in "real" app ...
 
