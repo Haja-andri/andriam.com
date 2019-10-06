@@ -3,9 +3,9 @@ module.exports = {
     title: `Haja Andriamaro Blog and Learnings`,
     name: `Haja Andriamaro`,
     siteUrl: `https://novela.narative.co`,
-    description: `On this blog I share my struggles and breakthrough as Fullstack Web developper`,
+    description: `On this blog I share my perpetual learning journey, the struggles and breakthrough as Fullstack Web developper`,
     hero: {
-      heading: `Sharing my learing... Notes, Pains and Gains`,
+      heading: `Sharing learning with notes, pains and gains.`,
       maxWidth: 652,
     },
     social: [
