@@ -1,5 +1,5 @@
 ---
-title: Discovering Python from a Javascript reference.
+title: Discovering Python, from a Javascript reference.
 author: Haja Andriamaro
 date: 2019-10-06
 hero: ./images/python.jpg
@@ -128,7 +128,7 @@ my_fruits = ("orange", "apple", "pear")
 
 ## Functions
 
-### Column, Semi-column and Indentation
+### Column, Semi-column, Indentation
 
 Functions bloc code in Python, are not wrapped inside curly brackets `{}`. Python use mostly a combinaison of column `:`
 and indemtation to define the start and the end of a bloc of code.
@@ -145,6 +145,24 @@ def my_function (a, b): # function my_function (a, b) {
 To be continued (https://www.tutorialspoint.com/python/python_basic_operators.htm)
 
 ### Passing as reference vs Value
+
+Arguments in Python can be passed as a reference or as a value. Basically passing a value is passing a copy of the
+original data to the function, and that copy will evetually be mutated. Passing as reference on the other and 
+send a reference to the original data (memory location). In this case, if we perform mutations on the received 
+variable, its actually the original data that will mutated.
+
+If you are like me, being a `visual` person, below illustration was quite helpfull to understand this.
+
+<div className="Image__Small">
+  <img
+    src="./images/pass-by-ref-vs-value.gif"
+    alt="Passing as Reference vs Value"
+  />
+</div>
+
+However, I could not find a way to differentiate them (the two ways) from a pure syntaxe point of view.
+My understanding is that the type of argument (mutable or not) the function receives, will
+determine the behaviour (reference or value). Probably more on that further down the line.
 
 ### Undefined number of arguments
 
