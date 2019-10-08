@@ -1,0 +1,239 @@
+---
+title: Discovering Python, from a Javascript reference.
+author: Haja Andriamaro
+date: 2019-10-06
+hero: ./images/python.jpg
+excerpt: I have learned Javascript as my first langage. This article is about my first week in discovering Python few months dow the line.
+---
+
+# First feeling 
+
+Learning a new langage always feels both, ecxiting and scary at the same time. You are excited because you are going to learn something new, that's by 
+it self is ecxiting regardless of what you are learning. But it can be scary as well because you have to get out of
+your confort zone. However, if i compare with my feelings when i decided to learn Javascript, the "ecxitment" part was much more dominent than the scary part.
+
+Below are my notes at the end of the first week getting into Python. I will be using Javascript as point of comparaison where relevant.
+
+
+## Structuring the code
+
+### Variables
+
+The first thing i noticed, is the absence of varatiable label in Python. There is no need to label your variables
+with thing like `const`, `var` or `let` in python. You just write the name and asiign an intial value to it.
+Its the type of the intial assigned value that will define how the variable can be used later, mostly mutable or not.
+
+```python
+my_variable = "initial value assiged"
+```
+### Comments
+
+Single line comments in Python start with a `#`. As for multi line comments, it looks like there are several interpretation
+possible. So i will stick to the `#` notation here so i dont take the risk of misleading you.
+
+```python
+# this is a single line comment
+# Equivalent to // in js
+```
+
+### Console.log
+
+This is straight forward
+```python
+print("something") # console.log("something")
+```
+However, the built buil in `print()` function in Python can accomodate more formating parameters such as
+
+```python
+print(f"Received variable {variable}") # console.log("something" + variable)
+```
+
+### Operators
+
+It looks like as an overall appraoch, Python was designe to be as close as possible to `english words`. 
+Therefore in spme cases, symbols will be replaced by `words`. 
+Things like `&&`, `||` and `!=` in js, will be replaced by `and`, `or` and `not` in python.
+However the operator `===` in js will just be `==`
+Also worth noticing that condotional test like `else if` is shortened to `elif`
+
+```python
+# Logical operators in python
+if A and B: # if (A && B) 
+elif A or B: # else if ( A || B)
+elif A not B: # else if ( A != B)
+else: # else
+```
+
+Python’s membership operators test the presence of a given data inside a sequence (strings, lists, ...) 
+Following are the two main onces
+
+```python
+a = 10
+b = 20
+list = [1, 4, 5, 10 ]
+
+if ( a in list ):
+    print("A is present in the list") # Console.log("A is present in the list")
+if ( b not in list ):
+    print("B is not present in the list") # Console.log("B is not present in the list")
+```
+
+
+### Stronger types (int, string, float, )
+
+Python seems to be strongly typed and required that your data types are in synch before executing an operation. 
+For example, a `string` and an `integer` cannot be concanated unless the integer is explicitly converted to a string.
+
+```python
+integer = 4 # const loop = 4
+string = "Number of wheels" # const string = "Number of wheels"
+
+phrase = string + str(integer) # const phrase =  string + integer
+```
+
+
+### List (array?)
+
+It looks like `List` in python is the equivalent of `array` in Javascript
+
+```python
+# Python list
+my_fruits = ["orange", "apple", "pear"] # const my_fruits = ["orange", "apple", "pear"]
+```
+### Dictionnary (Object?)
+
+As for `Dictionary`, the closest thing in javascript would be an object
+
+```python
+# Python dictionary
+my_fruits = {
+    "name": "apple",
+    "color" "red",
+    "prce": "10
+    } # same in js but with a lable (const, var, let) before the variable name
+```
+
+### Tuple (Imutable list)
+
+Tuple are similar to List with the following specificities
+
+- The data intialisation is wrapped inside two parentheses `()` and not square brackets `[]`
+- And most importantly, typles are not mutable. It can not be changed once initialised
+```python
+# Python typle
+my_fruits = ("orange", "apple", "pear") 
+# Have no equivalent in javascript as 
+# all variables in js are by default mutable
+```
+
+## Functions
+
+### Column, Semi-column, Indentation
+
+Functions bloc code in Python, are not wrapped inside curly brackets `{}`. Python use mostly a combinaison of column `:`
+and indemtation to define the start and the end of a bloc of code.
+The key word `function` is also replace by key word `def` in Python. 
+Finally, there is no need to finish each line of code with a semi-colun `;` as we would do in Javascript
+
+```python
+# Python function
+def my_function (a, b): # function my_function (a, b) {
+    return a + b # return a + b;
+# }
+```
+
+### Passing as reference vs Value
+
+Arguments in Python can be passed as a reference or as a value. Basically passing a value is passing a copy of the
+original data to the function, and that copy will evetually be mutated. Passing as reference on the other and 
+send a reference to the original data (memory location). In this case, if we perform mutations on the received 
+variable, its actually the original data that will mutated.
+
+If you are like me, being a `visual` person, below illustration was quite helpfull to understand this.
+
+<div className="Image__Small">
+  <img
+    src="./images/pass-by-ref-vs-value.gif"
+    alt="Passing as Reference vs Value"
+  />
+</div>
+
+However, I could not find a way to differentiate them (the two ways) from a pure syntaxe point of view.
+My understanding is that the type of argument (mutable or not) the function receives, will
+determine the behaviour (reference or value). Probably more on that further down the line.
+
+### Undefined number of arguments
+
+A cool feature in Python is to be able to write a function that accepts an arbitrary number of keyword arguments.
+I am not sure yet practically how it can be used/usefull, but its good to keep in mind. 
+
+```python
+def with_arbitrary_num_of_arg(**keywords):
+    for key in keywords:
+        print(f"key: {key}, value: {keywords[key]}")
+
+# Should print
+# key: a, value: 12
+# key: b, value: 30
+with_arbitrary_num_of_arg(a=12, b=30)
+```
+
+## Class
+
+### Self
+
+The `self` keyword in python classes is the equivalent of `this` in javascript classes  
+
+### Inheritence (is a)
+
+Classes can inherit from a `parent` classe properties and methodes by :
+1. Passing the parent as argument of the child class definition
+2. Refering to the parent in the child class constructor with the keyword `super`   
+
+```python
+# Parent class
+class LatLon:
+    def __init__(self, lat, lon):
+        self.lat = lat
+        self.lon = lon
+
+# Child class --> Waupoint (is a) LatLon
+class Waypoint(LatLon): # Receiving parent class as argument
+    def __init__(lat, lon, name):
+        super().__init__(self, lat, lon) # Child class constructor with reference to its parent
+        self.name = name # Child class specific property
+```
+
+### Composition (has a)
+
+Composition is a technique to define a class that can be composed with other classes properties and methodes.
+A way to identify the relationship can be done using `has a` between the them. In below example, a `Car` has a `Motor`.
+
+```python
+# Class Motor
+class Motor:
+    def __init__(self, make, cc):
+        self.make = make
+        self.cc = cc
+
+# Class Car
+class Car:
+    def __init__(self, make, model, engine):
+        self.make = make
+        self.model = model
+        self.engine = engine
+
+# Instance of a Motor
+honda_petrol_motor = Motor("Honda", 1799) 
+# Instance of Car that has a Honda motor
+car = Car("Honda", "Civic", honda_petrol_motor) 
+```
+
+## Conclusion
+
+Python feels fairly accessible when you already have some notions of coding from another langage. 
+I like its closeness to `english word` compared to other langages. It makes its syntaxes more readable, 
+and building memory muscle faster. Its seems to be a good choice also for lower level process, such
+as reading and manipulating files from the system, or accessing operating system info. 
+At the time of writing this article, I mostly used Python to practice writing algorithms.
+That will be the subject of my next article.
