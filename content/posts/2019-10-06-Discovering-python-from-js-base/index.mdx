@@ -142,8 +142,6 @@ def my_function (a, b): # function my_function (a, b) {
 # }
 ```
 
-To be continued (https://www.tutorialspoint.com/python/python_basic_operators.htm)
-
 ### Passing as reference vs Value
 
 Arguments in Python can be passed as a reference or as a value. Basically passing a value is passing a copy of the
@@ -166,10 +164,76 @@ determine the behaviour (reference or value). Probably more on that further down
 
 ### Undefined number of arguments
 
+A cool feature in Python is to be able to write a function that accepts an arbitrary number of keyword arguments.
+I am not sure yet practically how it can be used/usefull, but its good to keep in mind. 
+
+```python
+def with_arbitrary_num_of_arg(**keywords):
+    for key in keywords:
+        print(f"key: {key}, value: {keywords[key]}")
+
+# Should print
+# key: a, value: 12
+# key: b, value: 30
+with_arbitrary_num_of_arg(a=12, b=30)
+```
+
 ## Class
 
 ### Self
 
+The `self` keyword in python classes is the equivalent of `this` in javascript classes  
+
 ### Inheritence (is a)
 
+Classes can inherit from a `parent` classe properties and methodes by :
+1. Passing the parent as argument of the child class definition
+2. Refering to the parent in the child class constructor with the keyword `super`   
+
+```python
+# Parent class
+class LatLon:
+    def __init__(self, lat, lon):
+        self.lat = lat
+        self.lon = lon
+
+# Child class --> Waupoint (is a) LatLon
+class Waypoint(LatLon): # Receiving parent class as argument
+    def __init__(lat, lon, name):
+        super().__init__(self, lat, lon) # Child class constructor with reference to its parent
+        self.name = name # Child class specific property
+```
+
 ### Composition (has a)
+
+Composition is a technique to define a class that can be composed with other classes properties and methodes.
+A way to identify the relationship can be done using `has a` between the them. In below example, a `Car` has a `Motor`.
+
+```python
+# Class Motor
+class Motor:
+    def __init__(self, make, cc):
+        self.make = make
+        self.cc = cc
+
+# Class Car
+class Car:
+    def __init__(self, make, model, engine):
+        self.make = make
+        self.model = model
+        self.engine = engine
+
+# Instance of a Motor
+honda_petrol_motor = Motor("Honda", 1799) 
+# Instance of Car that has a Honda motor
+car = Car("Honda", "Civic", honda_petrol_motor) 
+```
+
+## Conclusion
+
+Python feels fairly accessible when you already have some notions of coding from another langage. 
+I like its closeness to `english word` compared to other langages. It makes its syntaxes more readable, 
+and building memory muscle faster. Its seems to be a good choice also for lower level process, such
+as reading and manipulating files from the system, or accessing operating system info. 
+At the time of writing this article, I mostly used Python to practice writing algorithms.
+That will be the subject of my next article.
