@@ -9,28 +9,31 @@ excerpt: I have learned Javascript as my first langage. This article is about my
 # First feeling 
 
 Learning a new langage feels ecxiting and scary at the same time. You are excited because you are going to learn something new, that's by 
-it self is very ecxiting regardless of what you are learning. But it can be scary as well because you have to get out of
-your confort zone. However, this time, i felt more excited than when i decided to learn to code with javascript. I guess my level 
-of confidence went up since the beggining of my coder journey  
+it self is very ecxiting regardless of what you are going to learn. ANd at the same time, it is scary because you have to get out of
+your confort zone. However, this time, i felt more excited than when i initially decided to learn javascript. I guess my level 
+of confidence went up since the beggining of my coder journey.  
 
-Below are my intial notes after a week getting into Python @LambdaSchool. I will be using Javascript as point of comparaison where relevant.
+Following are my intial notes after a week of diving into Python @LambdaSchool. I will be using Javascript as point of comparaison where relevant.
 
 
 ## Structuring the code
 
 ### Variables
 
-The first thing i have noticed, is the absence of varatiable label in Python. There is no need to label your variables
-with thing like `const`, `var` or `let` that are mandatory in Javascript. You just give a variable name, and assign to it an intial value.
-Its the type of the intial value that will define how the variable can be used later, mostly if it is mutable or not.
+The first thing i have noticed, is the absence of varariables label in Python. There is no need to label your variables
+with `const`, `var` or `let`. You just give a variable name, and its initial value.
+The type of the intial value assigned will define how the variable can be used later, mostly if it is mutable or not.
 
 ```python
-my_variable = "initial value assiged" # const my_variable = "initial value assiged" ib js
+# Mutable varialble (string)
+my_variable = "initial value" # let my_variable = "initial value" in js
+
+# Non Mytable variable (tuple)
+tuple_variable = ("some data") # const tuple_variable = ["some data"]
 ```
 ### Comments
 
-Single line comment in Python start with the character `#`. As for multi line comments, it looks like there are several possible interpretation. 
-So i will stick to the single line comment `#` notation here for now.
+Single line comment in Python start with the character `#`. 
 
 ```python
 # this is a single line comment
@@ -43,19 +46,18 @@ This is straight forward
 ```python
 print("something") # console.log("something")
 ```
-`Print()` can also accomodate several formating parameters such as the one below
+`Print()` can also take several formating parameters such as the one below
 
 ```python
-print(f"Received variable {variable}") # console.log("Received variable" + variable)
+print(f"Received variable {variable}") # console.log(`Received variable ${variable}`)
 ```
 
 ### Operators
 
 As an overall appraoch, Python seems to be designed to be as close as possible to `english words`. 
-Therefore in some cases, symbols will be replaced by `plain english words`. 
-Things like `&&`, `||` and `!=` in js, will be replaced by `and`, `or` and `not` in python.
+Therefore in many cases, symbols will be replaced by plain english words. 
 
-Also worth noticing that conditional test `else if` is shortened to `elif`
+Also worth noting that conditional test `else if` is shortened to `elif`
 
 ```python
 # Logical operators in python
@@ -81,22 +83,22 @@ if b not in list:
 
 ### Stronger types (int, string, float, )
 
-Python seems to be strongly typed and required that your data types are in synch before executing an operation. 
-For example, a `string` and an `integer` cannot be concanated unless the integer is explicitly converted to a string.
-Which is not required in Javascript
+Python is a typed langage, it requires that your data types are in synch before executing it. 
+For example, a `string` and an `integer` cannot be concanated unless the integer is explicitly converted into a string.
+Which is not required in Javascript.
 
 ```python
 integer = 4 # const loop = 4
 string = "Number of wheels" # const string = "Number of wheels"
 
-# the integer is converted first with str(). in JS const phrase =  string + integer
+# the integer is converted first with str(). in JS const phrase =  string + integer;
 phrase = string + str(integer) 
 ```
 
 
 ### List (array?)
 
-`List` in Python are similar to `array` in Javascript.
+`List` in Python are similar to `array` in JavaScript.
 
 ```python
 # Python list
@@ -104,7 +106,7 @@ my_fruits = ["orange", "apple", "pear"] # const my_fruits = ["orange", "apple", 
 ```
 ### Dictionnary (Object?)
 
-As for `Dictionary`, the closest thing in javascript seems to be objects
+As for `Dictionary`, the closest thing in JavaScript are objects
 
 ```python
 # Python dictionary
@@ -117,10 +119,11 @@ my_fruits = {
 
 ### Tuple (Imutable list)
 
-`Tuple` are similar to `List` with the following specificities
+`Tuple` are like `List`, but with the following specificities.
 
-- The data intialisation is wrapped inside two parentheses `()` and not square brackets `[]`
+- The data intialisation is wrapped between two parentheses `()`, not square brackets `[]`
 - `Tuples` are not mutable. It can not be changed once initialised
+
 ```python
 # Python typle
 my_fruits = ("orange", "apple", "pear") 
@@ -130,9 +133,9 @@ my_fruits = ("orange", "apple", "pear")
 
 ### Column, Semi-column, Indentation
 
-Functions bloc code in Python, are not wrapped inside curly brackets `{}`. Python function use a combinaison of column `:`
-and indentation after the column to define the start and the end of a bloc of code. Its advised to use 4 spaces.
-Tabs can be used as well but the entire script must be consistent.
+Functions bloc in Python, are NOT wrapped inside curly brackets `{}`. It uses a combinaison of column `:`
+and indentation after the column, to define the start/end of a bloc of code. Its advised to use 4 spaces.
+Tabs can be used as well but the entire script must be consistent (not mixin spaces and Tabs).
 The key word `function` in js is also replace by key word `def` in Python. 
 Finally, there is no need to finish each line of code with a semi-colun `;` as we would do in Javascript
 
@@ -145,12 +148,12 @@ def my_function (a, b): # the column define the beggining of the bloc
 
 ### Passing as reference vs Value
 
-Arguments in Python can be passed as references or as values. Passing a value is passing a copy of the
-original data to the function, and that copy will eventually be mutated by the function. 
-Passing as reference on the other hand send a reference to the original data (memory location). 
-In this case, if we perform any mutations on the received variable, its the original data that will mutated.
+Argument in Python can be passed as reference, or as value. Passing a value will make a copy of the
+original data, and that copy will eventually be mutated by the function. 
+On the other hand, passing as reference send a reference of the original data (memory location) to the function. 
+Therefore, if you try to mutate the received variable, the original data that will mutate (change).
 
-If you are like me, being a `visual` person, below illustration was quite helpfull to understand this.
+If you are like me, being a `visual` person, this illustration is quite helpfull to understand the difference.
 
 <div className="Image__Small">
   <img
@@ -159,7 +162,7 @@ If you are like me, being a `visual` person, below illustration was quite helpfu
   />
 </div>
 
-Having said that, I could not find a way to differentiate them (the two ways) from a pure syntaxe point of view.
+Having said that, from a pure syntaxe point of view, I could not find a way to differentiate the two approaches.
 My understanding is that the type of argument (mutable or not) the function receives, will
 define the behaviour (by reference or value). Probably more on that further down the line.
 
@@ -183,11 +186,11 @@ with_arbitrary_num_of_arg(a=12, b=30)
 
 ### Self
 
-The `self` keyword in python classes is the equivalent of `this` in javascript classes  
+The `self` keyword in python class is the equivalent of `this` in JavaScript class.  
 
 ### Inheritence (is a)
 
-Classes can inherit from a `parent` classe properties and methodes by :
+A class can inherit from a `parent` classe properties and methodes by :
 1. Passing the parent as argument of the child class 
 2. Refering to the parent in the child class constructor with the keyword `super`   
 
@@ -209,7 +212,7 @@ class Waypoint(LatLon): # Receiving parent class as argument
 ### Composition (has a)
 
 Composition is a technique to define a class that can be composed with other classes properties and methodes.
-A way to identify this type of relationship is using `has a` between them. In below example, a `Car` has a `Motor`.
+A way to identify this type of relationship to use `has a` between them. For example, in below code, a `Car` has a `Motor`.
 
 ```python
 # Class Motor
@@ -234,8 +237,8 @@ car = Car("Honda", "Civic", honda_petrol_motor)
 ## Conclusion
 
 Python feels fairly accessible when you already have some notions of coding from another langage. 
-I like its closeness to `english word` compared to Javascript. It makes the code more readable, 
-and building memory muscle faster. Its seems to be a good choice also for lower level process, such
+I like its closeness to `english word` compared to JavaScript. It makes the code more readable, 
+and building memory muscle faster. Additionaly, its seems to be a good choice for lower level process, such
 as reading and manipulating files from the system, or accessing operating system info. 
 At the time of writing this article, I mostly used Python to practice writing algorithms.
 That will be the subject of my next article.

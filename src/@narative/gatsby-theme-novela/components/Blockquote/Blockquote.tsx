@@ -26,7 +26,7 @@ const Blockquote = styled.blockquote`
     line-height: 1.32;
 
     ${mediaqueries.tablet`
-      font-size: 24px;
+      font-size: 20px;
       padding: 0 180px;
     `};
 
