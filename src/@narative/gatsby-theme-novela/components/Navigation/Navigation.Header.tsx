@@ -200,10 +200,16 @@ const LogoLink = styled(Link)<{ back: string }>`
 `;
 
 const MenuLink = styled.div`
+  margin-left:10px;
   position: relative;
   display: flex;
   align-items: center;
-  border:1px solid green;
+  width:100%;
+  
+  ${mediaqueries.tablet`
+  margin-left:0px;
+  `}
+
 `;
 
 const NavControls = styled.div`
