@@ -8,9 +8,8 @@ const NavMenu = ({ fill = "#fff" }: { fill?: string }) => {
   // const isDark = props;
   return (
     <NavMenuContainer fill={_fill}>
-      <a className="nav-item">HOME</a>
-      <a className="nav-item">ABOUT</a>
-      <a className="nav-item">PORTFOLIO</a>
+      <a className="nav-item" href="/">BLOG</a>
+      <a className="nav-item" href="/discovering-python-from-a-javascript-reference">PORTFOLIO</a>
     </NavMenuContainer>
   );
 };
