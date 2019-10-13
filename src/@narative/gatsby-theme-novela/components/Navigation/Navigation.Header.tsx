@@ -5,6 +5,7 @@ import { useColorMode } from "theme-ui";
 
 import Section from "@components/Section";
 import Logo from "@components/Logo";
+import NavMenu from "@components/NavMenu";
 
 import Icons from "@icons";
 import mediaqueries from "@styles/media";
@@ -54,6 +55,9 @@ function NavigationHeader() {
           <Logo fill={fill} />
           <Hidden>Navigate back to the homepage</Hidden>
         </LogoLink>
+        <MenuLink>
+            <NavMenu fill={fill} />
+        </MenuLink>
         <NavControls>
           {showBackArrow ? (
             <button
@@ -193,6 +197,19 @@ const LogoLink = styled(Link)<{ back: string }>`
       transform: translateX(-3px);
     }
   }
+`;
+
+const MenuLink = styled.div`
+  margin-left:10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width:100%;
+  
+  ${mediaqueries.tablet`
+  margin-left:0px;
+  `}
+
 `;
 
 const NavControls = styled.div`
