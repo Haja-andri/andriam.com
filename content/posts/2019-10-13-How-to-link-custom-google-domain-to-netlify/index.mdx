@@ -1,0 +1,117 @@
+---
+title: How to link your Google domain to your Netlify site.
+author: Haja Andriamaro
+date: 2019-10-13
+hero: ./images/netlify-google-last.jpg
+excerpt: Google has a great domain purchase platform, but site deployment on Netlify is unbeatable.
+---
+
+# Netlify 
+
+What can i say about Netlify ... well not much beside it feels like a magic box, really. When you deploy your
+site with Netlify, everything just run smoothly like magic. On top of that, they provide you with free access and number of
+site deploy that is more than what you will ever need for side projects.
+
+### Custom domain.
+
+Each site you deploy on Netlify will be assigned with funny/cool URL. You can also customize it for free the way you want
+as long as you keep the Netlify.com at the end of the URL. 
+But if you want to have full customization of you URL, you cna also but a domain name directly from Netlify and attach it to your site.
+However, to date there are limitations on the kind of domain extensions you can buy using Netlify. I believe they can be
+more expensive for the same domain than specialized provider. 
+
+# Google domain
+
+Google recently launched a platform to buy domains, and managed your site on the same platform. Buying is straight forward,
+and it has the kind of reach you would expect from Google. However, as I said earlier, we are miles away from the kind of experience
+Netlify provides when it comes to deploy and manage your site... So why not get the best of both? Here we go.
+
+# Linking a custom domain with Netlify
+
+### Step one: Buy domain on Google 
+
+I am not going to cover this part in details here as it is really straight forward. 
+
+1. Go on https://domains.google
+2. Search for your drean domain name (This could actually the hardest part)
+3. Once found, add to your bucket and checkout.
+
+Once you are done with the steps above, you should land on a screen with the following menu. Click on the button called `DNS`
+
+<div className="Image__Small">
+  <img
+    src="./images/dns-menu-small.png"
+    alt="Google DNS"
+  />
+</div>
+
+Once you clicked on `DNS` it will open the DNS default setting. And the `Use the Google Domains name servers` will be selected 
+by default. Select `Use custom name servers` instead so you can customize the setting.
+
+<div className="Image__Small">
+  <img
+    src="./images/dns-edit-medium.png"
+    alt="Google DNS"
+  />
+</div>
+
+### Step two: Get info from Netlify
+
+Now open another tab to open your Netlify dasboard. 
+
+1. Click on the site you want to use with your new domain name
+2. Click on the button called `Domain settings` from the box at the top of the page
+3. Then, from the menu on the left, select `Domain management` then `Domains`
+4. Finally you should see a green button called `Add custom domain`
+
+<div className="Image__Small">
+  <img
+    src="./images/add-domain.png"
+    alt="Add custome domain Netlify"
+  />
+</div>
+
+Click on `Add custom domain` then you will be prompted to enter the domain you want to use. This is where you enter the 
+domain name you just purchased from Google. Then click verify.
+
+Netlify will check if the domain is available, and since you purchased it, then it wont be available. 
+
+But fear not! You can still assign the domain to your site by clicking on `Yes, add domain`
+
+<div className="Image__Small">
+  <img
+    src="./images/verify-domain.png"
+    alt="Verify domain on Netlify"
+  />
+</div>
+
+Once you've done that, Netlify will make the DNS info you need available in your domain settings and management. 
+This is what you will need to finalise your setting from Google side. As far as Netlify is concerned, you are done!
+Yead, told you, Netfliy is dead simple ...
+
+<div className="Image__Small">
+  <img
+    src="./images/config-info.png"
+    alt="Verify domain on Netlify"
+  />
+</div>
+
+### Step three: Back to Google domain
+
+Now back to Google domain for the final setup. All you have to do really, is to :
+
+1. Click on `Use custom name servers`.
+2. Add the DNS info that you can copy and paste from Netlify.
+3. Deactivate the `DNSSEC` (Google will ask you this if you dont)
+4. Then save !
+
+<div className="Image__Small">
+  <img
+    src="./images/final-setup-small.png"
+    alt="Final DNS setup"
+  />
+</div>
+
+Thats it ! It can take few hours for the linking to be operational but when i did this, the linkage was almost instant!
+
+See you on the next read !
