@@ -18,7 +18,7 @@ const NavMenu = ({ fill = "#fff" }: { fill?: string }) => {
 export default NavMenu;
 
 const NavMenuContainer = styled.div<{ fill: string }>`
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   .nav-item{
     margin-left:20px;
     height: 40px; 
@@ -30,6 +30,7 @@ const NavMenuContainer = styled.div<{ fill: string }>`
     `}
     &:hover {
       font-weight: bold;
+      transform: translateX(-3px);
     }
   }
 `;
