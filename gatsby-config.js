@@ -5,7 +5,7 @@ module.exports = {
     siteUrl: `https://www.andriam.com`,
     description: `On this blog I share my perpetual learning journey, the struggles and breakthrough as Fullstack Web developper`,
     hero: {
-      heading: `Sharing learning, notes, pains and gains.`,
+      heading: `Shared learning, pains and gains.`,
       maxWidth: 652,
     },
     social: [
@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         name: `linkedin`,
-        url: `https://www.linkedin.com/in/haja-andriamaro-b145412/`,
+        url: `https://www.linkedin.com/in/haja-andriamaro/`,
       },
     ],
   },
