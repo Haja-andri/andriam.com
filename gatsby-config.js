@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Haja Andriamaro Blog and Learnings`,
     name: `Haja Andriamaro`,
-    siteUrl: `https://novela.narative.co`,
+    siteUrl: `https://www.andriam.com`,
     description: `On this blog I share my perpetual learning journey, the struggles and breakthrough as Fullstack Web developper`,
     hero: {
       heading: `Sharing learning, notes, pains and gains.`,
