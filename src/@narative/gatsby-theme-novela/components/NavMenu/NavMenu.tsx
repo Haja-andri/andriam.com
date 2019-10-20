@@ -8,7 +8,7 @@ const NavMenu = ({ fill = "#fff" }: { fill?: string }) => {
   // const isDark = props;
   return (
     <NavMenuContainer fill={_fill}>
-      <a className="nav-item" href="/authors/haja-andriamaro">ABOUT</a>
+      {/* <a className="nav-item" href="/authors/haja-andriamaro">ABOUT</a> */}
       <a className="nav-item" href="/">BLOG</a>
       <a className="nav-item" href="/my-portfolio-and-projects">PORTFOLIO</a>
     </NavMenuContainer>
