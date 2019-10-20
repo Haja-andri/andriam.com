@@ -108,6 +108,11 @@ const BioText = styled.p`
 const Social = styled.div`
   display: flex;
   justify-content: flex-start;
-  margin-top: 15px;
+  margin-top: 0px;
+  margin-left:120px;
   width:90%;
+  ${mediaqueries.phablet`
+  margin-top: 15px;
+  margin-left:140px;
+`}
 `;
