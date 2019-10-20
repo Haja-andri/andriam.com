@@ -70,6 +70,15 @@ function ArticlesHero({ authors }: IAuthor) {
           >
             <Icons.Rows />
           </GridButton>
+          <GridButton
+            onClick={() => setGridLayout('rows')}
+            active={!tilesIsActive}
+            data-a11y="false"
+            title="Show articles in Row grid"
+            aria-label="Show articles in Row grid"
+          >
+            <Icons.Rows />
+          </GridButton>
         </GridControlsContainer>
       </SubheadingContainer>
     </Section>
