@@ -5,21 +5,31 @@ import mediaqueries from '@styles/media';
 
 import Image from '@components/Image';
 import { IAuthor } from '@types';
+import SocialLinks from "@components/SocialLinks";
+
+interface AuthorHeroProps {
+  author: IAuthor;
+}
 
 function Bio({ author }: IAuthor) {
   return (
     <BioContainer>
-      <BioAvatar
-        as={author.authorsPage ? Link : 'div'}
-        to={author.slug}
-        data-a11y="false"
-        aria-label="Author's bio"
-      >
-        <BioAvatarInner>
-          <Image src={author.avatar.medium} />
-        </BioAvatarInner>
-      </BioAvatar>
-      <BioText dangerouslySetInnerHTML={{ __html: author.bio }} />
+      <MainBio>
+        <BioAvatar
+          as={author.authorsPage ? Link : 'div'}
+          to={author.slug}
+          data-a11y="false"
+          aria-label="Author's bio"
+        >
+          <BioAvatarInner>
+            <Image src={author.avatar.medium} />
+          </BioAvatarInner>
+        </BioAvatar>
+        <BioText dangerouslySetInnerHTML={{ __html: author.bio }} />
+      </MainBio>
+      <Social>
+        <SocialLinks links={author.social} />
+      </Social>
     </BioContainer>
   );
 }
@@ -28,6 +38,7 @@ export default Bio;
 
 const BioContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   position: relative;
   left: -10px;
@@ -35,6 +46,10 @@ const BioContainer = styled.div`
   ${mediaqueries.phablet`
     flex-direction: column;
   `};
+`;
+
+const MainBio = styled.div`
+  display: flex;
 `;
 
 const BioAvatar = styled.div`
@@ -88,4 +103,11 @@ const BioText = styled.p`
     color: ${p => p.theme.colors.grey};
     text-decoration: underline;
   }
+`;
+
+const Social = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 15px;
+  width:90%;
 `;
