@@ -245,6 +245,7 @@ const Item = styled.div<{ gridLayout: string }>`
 `;
 
 const ImageContainer = styled.div<{ narrow: boolean; gridLayout: string }>`
+  border:1px solid red;
   position: relative;
   height: ${p => (p.gridLayout === "tiles" ? "280px" : "220px")};
   box-shadow: 0 30px 60px -10px rgba(0, 0, 0, ${p => (p.narrow ? 0.22 : 0.3)}),
