@@ -3,7 +3,7 @@ module.exports = {
     title: `Haja Andriamaro Blog and Learnings`,
     name: `Haja Andriamaro`,
     siteUrl: `https://www.andriam.com`,
-    description: `On this blog I share my perpetual learning journey, the struggles and breakthrough as Fullstack Web developper`,
+    description: `On this blog I share my learning journey, the struggles and breakthrough as Fullstack Web developper`,
     hero: {
       heading: `Shared learning, pains and gains.`,
       maxWidth: 652,
