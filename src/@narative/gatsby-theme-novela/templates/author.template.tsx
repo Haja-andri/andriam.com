@@ -7,7 +7,7 @@ import Layout from "@components/Layout";
 import Paginator from "@components/Navigation/Navigation.Paginator";
 
 import AuthorHero from "../sections/author/Author.Hero";
-import AuthorArticles from "../sections/author/Author.Articles";
+import AuthorAbout from "../sections/author/Author.About";
 
 function ArticlesPage({ location, pageContext }) {
   const author = pageContext.additionalContext.author;
@@ -18,7 +18,7 @@ function ArticlesPage({ location, pageContext }) {
       <SEO pathname={location.pathname} />
       <Section narrow>
         <AuthorHero author={author} />
-        <AuthorArticles articles={articles} />
+        <AuthorAbout articles={articles} />
         <AuthorPaginator>
           <Paginator {...pageContext} />
         </AuthorPaginator>
